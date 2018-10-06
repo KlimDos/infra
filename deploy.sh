@@ -1,18 +1,18 @@
-#!/bin/bash
+#! /bin/bash
 #####################################################################
 # the script is responsible to install MongoDB into the Ubuntu instance
 # ROOT access required
 #####################################################################
 # create a folder for application
-mkdir ~/app
+mkdir /home/aalimov/app
 # clone repository
-git clone https://github.com/Artemmkin/reddit.git ~/app/
+git clone https://github.com/Artemmkin/reddit.git /home/aalimov/app/
 # browse to app folder
-cd ~/app
+cd /home/aalimov/app
+# activate rvm for current bash session  
+source /home/aalimov/.rvm/scripts/rvm
 # install app dependencies
 bundle install
-# activate rvm for current bash session  
-source ~/.rvm/scripts/rvm
 # start puma web server d means - 
 puma -d
 # check if the web-server is up and running
