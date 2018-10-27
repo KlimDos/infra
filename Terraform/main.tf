@@ -6,6 +6,10 @@ resource "google_compute_instance" "app" {
 name = "reddit-app"
 machine_type = "g1-small"
 zone = "europe-west1-b"
+metadata_startup_script = "../deploy.sh"
+metadata {
+    sshKeys = "aalimov:${file("~/.ssh/id_rsa.pub")}" 
+    }
 # определение загрузочного диска
 boot_disk {
     initialize_params {
@@ -14,9 +18,10 @@ boot_disk {
     }
 # определение сетевого интерфейса
 network_interface {
-# сеть, к которой присоединить данный интерфейс
-network = "default"
-# использовать ephemeral IP для доступа из Интернет
-access_config {}
-}
+    # сеть, к которой присоединить данный интерфейс
+    network = "default"
+    # использовать ephemeral IP для доступа из Интернет
+    access_config {}
+    }
+
 }
