@@ -2,7 +2,7 @@
     "builders":[
         {
             "type": "googlecompute",
-            "project_id": "devops-217115",
+            "project_id": "infra-220716",
             "image_name": "reddit-base-{{timestamp}}",
             "source_image": "ubuntu-1604-xenial-v20181004",
             "zone": "europe-west1-b",
