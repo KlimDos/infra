@@ -1,4 +1,4 @@
-### Repo for styding within the DevOps cource
+### Repo for studying within the DevOps course
 
 * Be
 * Bu
