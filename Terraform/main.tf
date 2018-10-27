@@ -6,7 +6,8 @@ resource "google_compute_instance" "app" {
 name = "reddit-app"
 machine_type = "g1-small"
 zone = "europe-west1-b"
-metadata_startup_script = "../deploy.sh"
+tags = ["puma-server"]
+metadata_startup_script = "${file("../deploy.sh")}"
 metadata {
     sshKeys = "aalimov:${file("~/.ssh/id_rsa.pub")}" 
     }
