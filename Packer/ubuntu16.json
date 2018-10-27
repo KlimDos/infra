@@ -12,12 +12,12 @@
     ],
     "provisioners": [
         {
-        "type": "shell",
-        "script": "/home/sasha/Desktop/mypro-git/infra(DevOps)/infra/install_ruby.sh"
+            "type": "shell",
+            "script": "../install_ruby.sh"
         },
         {
             "type": "shell",
-            "script": "/home/sasha/Desktop/mypro-git/infra(DevOps)/infra/install_mongodb.sh",
+            "script": "../install_mongodb.sh",
             "execute_command": "sudo {{.Path}}"
         }
         ]
