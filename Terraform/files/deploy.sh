@@ -14,6 +14,10 @@ source /home/aalimov/.rvm/scripts/rvm
 # install app dependencies
 bundle install
 # start puma web server d means - 
-puma -d
+#puma -d
 # check if the web-server is up and running
-ps aux | grep puma
+#ps aux | grep puma
+#run as a service
+sudo mv /tmp/puma.service /etc/systemd/system/puma.service
+sudo systemctl start puma
+sudo systemctl enable puma

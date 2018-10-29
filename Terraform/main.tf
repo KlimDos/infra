@@ -7,7 +7,8 @@ name = "reddit-app"
 machine_type = "g1-small"
 zone = "europe-west1-b"
 tags = ["puma-server"]
-metadata_startup_script = "${file("../deploy.sh")}"
+#old fashen style of deploy the fresh application code
+#metadata_startup_script = "${file("../deploy.sh")}"
 metadata {
     sshKeys = "aalimov:${file("~/.ssh/id_rsa.pub")}" 
     }
@@ -23,6 +24,15 @@ network_interface {
     network = "default"
     # использовать ephemeral IP для доступа из Интернет
     access_config {}
-    }
-
+    }  
+connection {
+    type = "ssh"
+    user = "aalimov"
+    agent = false
+    private_key = "${file("~/.ssh/id_rsa")}"
+}
+provisioner "file"{
+    source = "files/puma.service"
+    destination = "/tmp/puma.service"
+}
 }
