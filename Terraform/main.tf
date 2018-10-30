@@ -12,7 +12,7 @@ tags = ["puma-server"]
 metadata {
     sshKeys = "aalimov:${file("~/.ssh/id_rsa.pub")}" 
     }
-# определение загрузочного диска
+# определение загрузочного диска2
 boot_disk {
     initialize_params {
         image = "reddit-base-1540660523"
