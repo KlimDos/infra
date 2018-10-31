@@ -29,11 +29,16 @@ connection {
     type = "ssh"
     user = "aalimov"
     agent = false
-    private_key = "${file("~/.ssh/id_rsa")}"
+    private_key = "${file("~/.ssh/id_rsa_decrypt")}"
 }
 provisioner "file"{
     source = "files/puma.service"
     destination = "/tmp/puma.service"
+}
+#change this, deploy script shoul creates this file db_config
+provisioner "file"{
+    source = "files/db_config"
+    destination = "/home/aalimov/db_config"
 }
 provisioner "remote-exec" {
 script = "files/deploy.sh"

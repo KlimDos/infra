@@ -1,4 +1,5 @@
 #! /bin/bash
+#set -e
 #####################################################################
 # the script is responsible to install MongoDB into the Ubuntu instance
 # ROOT access required
@@ -9,6 +10,7 @@ mkdir /home/aalimov/app
 git clone https://github.com/Artemmkin/reddit.git /home/aalimov/app/
 # browse to app folder
 cd /home/aalimov/app
+#touch db_config
 # activate rvm for current bash session  
 source /home/aalimov/.rvm/scripts/rvm
 # install app dependencies
