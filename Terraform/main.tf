@@ -1,6 +1,6 @@
 provider "google" {
-  project = "infra-220716"
-  region = "europe-west1"
+  project = "${var.project}"
+  region = "${var.region}"
 }
 resource "google_compute_instance" "app" {
 name = "reddit-app"
@@ -10,12 +10,12 @@ tags = ["puma-server"]
 #old fashen style of deploy the fresh application code
 #metadata_startup_script = "${file("../deploy.sh")}"
 metadata {
-    sshKeys = "aalimov:${file("~/.ssh/id_rsa.pub")}" 
+    sshKeys = "aalimov:${file(var.public_key_path)}" 
     }
 # определение загрузочного диска2
 boot_disk {
     initialize_params {
-        image = "reddit-base-1540660523"
+        image = "${var.disk_image}"
         }
     }
 # определение сетевого интерфейса

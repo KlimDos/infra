@@ -1,0 +1,17 @@
+{
+    "spellright.language": [
+        "English (American)"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext",
+        "terraform"
+    ],
+    "spellright.parserByClass": {
+        "terraform": {
+            "parser": "code"
+        }
+    },
+    "editor.formatOnSave": true
+}
