@@ -1,0 +1,19 @@
+{
+    "builders": [
+        {
+            "type": "googlecompute",
+            "project_id": "infra-220716",
+            "image_name": "reddit-app-{{timestamp}}",
+            "source_image_family": "ubuntu-1604-lts",
+            "zone": "europe-west1-b",
+            "ssh_username": "aalimov",
+            "machine_type": "f1-micro"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "script": "../install_ruby.sh"
+        }
+    ]
+}
