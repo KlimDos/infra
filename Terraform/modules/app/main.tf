@@ -21,14 +21,16 @@ resource "google_compute_instance" "app" {
   network_interface {
     # сеть, к которой присоединить данный интерфейс
     network = "default"
+
     # использовать ephemeral IP для доступа из Интернет
     access_config {
       network_tier = "STANDARD"
-      nat_ip = "${google_compute_address.app_ip.address}"
+      nat_ip       = "${google_compute_address.app_ip.address}"
     }
   }
 }
+
 resource "google_compute_address" "app_ip" {
-  name = "reddit-app-ip"
+  name         = "reddit-app-ip"
   network_tier = "STANDARD"
 }

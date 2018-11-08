@@ -4,5 +4,5 @@ variable "public_key_path" {
 
 variable "db_disk_image" {
   description = "Data Base disk image"
-  default = "reddit-db"
+  default     = "reddit-db"
 }
