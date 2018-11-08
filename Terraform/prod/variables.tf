@@ -15,6 +15,12 @@ variable "private_key_path" {
   description = "Path to the private key used for ssh access"
 }
 
-variable "disk_image" {
-  description = "Disk image"
+variable "app_disk_image" {
+  description = "App disk image"
+  default     = "reddit-app"
+}
+
+variable "db_disk_image" {
+  description = "Data Base disk image"
+  default     = "reddit-db"
 }
