@@ -4,6 +4,7 @@
             "type": "googlecompute",
             "project_id": "infra-220716",
             "image_name": "reddit-db-{{timestamp}}",
+            "image_family": "reddit-db",
             "source_image_family": "ubuntu-1604-lts",
             "zone": "europe-west1-b",
             "ssh_username": "aalimov",
