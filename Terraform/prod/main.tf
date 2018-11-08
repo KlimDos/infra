@@ -1,7 +1,16 @@
+terraform {
+  backend "gcs" {
+    bucket  = "aalimov-tf-state"
+    prefix  = "terraform/prod/state"
+  }
+}
+
 provider "google" {
   project = "${var.project}"
   region  = "${var.region}"
 }
+
+
 
 module "app" {
   source = "../modules/app"
