@@ -8,7 +8,11 @@ resource "google_compute_instance" "app" {
   #metadata_startup_script = "${file("../deploy.sh")}"
   metadata {
     sshKeys = "aalimov:${file(var.public_key_path)}"
+    
   }
+
+    metadata_startup_script = "${file(var.path_to_deploy)}"
+
 
   # определение загрузочного диска2
   boot_disk {
@@ -28,8 +32,21 @@ resource "google_compute_instance" "app" {
       nat_ip       = "${google_compute_address.app_ip.address}"
     }
   }
+connection {
+    type = "ssh"
+    user = "aalimov"
+    agent = false
+    private_key = "${file("~/.ssh/id_rsa")}"
 }
-
+provisioner "file"{
+    source = "../files/puma.service"
+    destination = "/tmp/puma.service"
+}
+  provisioner "file" {
+    source      = "../files/db_config"
+    destination = "/home/aalimov/db_config"
+  }
+}
 resource "google_compute_address" "app_ip" {
   name         = "reddit-app-ip"
   network_tier = "STANDARD"
