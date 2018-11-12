@@ -59,3 +59,15 @@
   - name: Remove me after adding real things
     debug:
       msg: "В этом сценарии нужно добавить модули для деплоя приложения, после можно удалить вызов модуля debug, который выводит это сообщение"
+  task:
+  - name: mkdir
+    file:
+      path: /home/aalimov/app 
+      state: directory 
+  - name: install git
+    apt:
+      name: git
+  - name: git clone 
+    git:   
+     repo: https://github.com/Artemmkin/reddit.git 
+     dist: /home/aalimov/app/
