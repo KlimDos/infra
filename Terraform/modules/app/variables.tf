@@ -9,7 +9,7 @@ variable "app_disk_image" {
 
 variable "path_to_deploy" {
   description = "path_to_deploy"
-  default     = "/home/sasha/Desktop/git-projects/infra/Terraform/files/deploy.sh"
+  default     = "../files/deploy.sh"
 }
 
 variable "private_key_path" {
