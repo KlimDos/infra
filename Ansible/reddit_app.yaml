@@ -65,7 +65,7 @@
       state: directory 
   - name: copy puma.service file to remote server
     copy:
-      src: /home/sasha/Desktop/git/infra/Terraform/files/puma.service
+      src: files/puma.service
       dest: /etc/systemd/system/puma.service
     become: true   
   - name: git clone 
@@ -76,6 +76,12 @@
     copy:
       content: ''
       dest: /home/aalimov/db_config
+
+  - name: Bundle install
+    bundler:
+      state: present
+      chdir: /home/aalimov/app
+      #tags: deploy-tag
      
   - name: set puma service
     become: true
