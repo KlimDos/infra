@@ -11,8 +11,8 @@ provider "google" {
 }
 
 
-module "app" {
-  source = "../modules/app"
+module "app_for_full_img" {
+  source = "../modules/app_for_full_img"
   public_key_path = "${var.public_key_path}"
   app_disk_image = "${var.app_disk_image}"  
 }
