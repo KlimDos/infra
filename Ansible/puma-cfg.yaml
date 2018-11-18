@@ -3,7 +3,7 @@
   hosts: appserver
   gather_facts: no
   vars:
-    db_host: 10.132.0.2
+    db_host: 10.132.0.3
 
   tasks:
     - name: mkdir
@@ -34,7 +34,6 @@
         src: files/puma.service
         dest: /etc/systemd/system/puma.service
       notify: reload puma
-    
 
   handlers:
     - name: reload puma
