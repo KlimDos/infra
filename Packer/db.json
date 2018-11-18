@@ -13,9 +13,8 @@
     ],
     "provisioners": [
         {
-            "type": "shell",
-            "script": "../install_mongodb.sh",
-            "execute_command": "sudo {{.Path}}"
+            "type": "ansible",
+            "playbook_file": "../Ansible/install_mongo.yaml"
         }
     ]
 }
