@@ -3,8 +3,8 @@
         {
             "type": "googlecompute",
             "project_id": "infra-220716",
-            "image_name": "reddit-app-{{timestamp}}",
-            "image_family": "reddit-app",
+            "image_name": "reddit-app-basic-{{timestamp}}",
+            "image_family": "reddit-app-basic",
             "source_image_family": "ubuntu-1604-lts",
             "zone": "europe-west1-b",
             "ssh_username": "aalimov",
@@ -13,8 +13,8 @@
     ],
     "provisioners": [
         {
-            "type": "shell",
-            "script": "../install_ruby.sh"
+            "type": "ansible",
+            "playbook_file": "../Ansible/install_reddit_app.yaml"
         }
     ]
 }
