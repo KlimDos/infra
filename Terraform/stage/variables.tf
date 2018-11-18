@@ -13,14 +13,9 @@ variable "public_key_path" {
   default = "~/.ssh/id_rsa.pub"
 }
 
-variable "private_key_path" {
-  description = "Path to the private key used for ssh access"
-  default = "~/.ssh/id_rsa"
-}
-
 variable "app_disk_image" {
   description = "App disk image"
-  default     = "reddit-app-full"
+  default     = "reddit-app-basic"
 }
 
 variable "db_disk_image" {

@@ -1,0 +1,50 @@
+---
+- name: deploy reddit app and set it up
+  hosts: appserver
+  gather_facts: no
+  vars:
+    db_host: 10.132.0.2
+
+  tasks:
+    - name: mkdir
+      file:
+        path: /home/aalimov/app 
+        state: directory
+    
+    - name: add config for db
+      template:
+        src: templates/db.config.j2
+        dest: /home/aalimov/db_config
+
+    - name: git clone 
+      git:   
+        repo: https://github.com/Artemmkin/reddit.git 
+        dest: /home/aalimov/app/
+      notify: restart puma
+            
+    - name: Bundle install dependancy 
+      bundler:
+        state: present
+        chdir: /home/aalimov/app
+      #tags: deploy-tag
+
+    - name: copy puma.service file to remote server
+      become: true 
+      copy:
+        src: files/puma.service
+        dest: /etc/systemd/system/puma.service
+      notify: reload puma
+    
+
+  handlers:
+    - name: reload puma
+      become: yes
+      systemd:
+        name: puma
+        state: reloaded
+    
+    - name: restart puma
+      become: yes
+      systemd:
+        name: puma
+        state: restarted

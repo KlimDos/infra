@@ -1,0 +1,37 @@
+# Deploy reddit app
+- name: "Reddit App: Deploy application"
+  hosts: reddit_app
+  gather_facts: no
+
+  tasks:
+  - name: mkdir
+    file:
+      path: /home/aalimov/app 
+      state: directory 
+  - name: copy puma.service file to remote server
+    copy:
+      src: files/puma.service
+      dest: /etc/systemd/system/puma.service
+    become: true   
+  - name: git clone 
+    git:   
+     repo: https://github.com/Artemmkin/reddit.git 
+     dest: /home/aalimov/app/
+  - name: mk empty db
+    copy:
+      content: ''
+      dest: /home/aalimov/db_config
+
+  - name: Bundle install dependencies
+    bundler:
+      state: present
+      chdir: /home/aalimov/app
+    tags: deploy-tag
+     
+  - name: set puma service
+    become: true
+    systemd:
+      name: puma
+      enabled: yes
+      state: started
+    tags: test
