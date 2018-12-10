@@ -1,0 +1,25 @@
+- name: deploy reddit app
+  hosts: app
+  gather_facts: no
+  tags: deploy-app
+  
+  tasks:
+
+  - name: git clone 
+    git:   
+      repo: https://github.com/Artemmkin/reddit.git 
+      dest: /home/aalimov/app/
+    notify: restart puma      
+            
+  - name: Bundle install dependancy 
+    bundler:
+      state: present
+      chdir: /home/aalimov/app
+
+  handlers:      
+
+  - name: restart puma
+    become: yes
+    systemd:
+      name: puma
+      state: restarted
