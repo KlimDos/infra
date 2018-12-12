@@ -5,30 +5,5 @@
   become: yes
   tags: configure-app   
 
-  vars:
-    db_host: 10.132.0.2
-
-  tasks:
-
-  - name: add config for db
-    template:
-      src: templates/db.config.j2
-      dest: /home/aalimov/db_config
-      owner: aalimov
-      group: aalimov
-
-  - name: copy puma.service file to remote server
-    copy:
-      src: files/puma.service
-      dest: /etc/systemd/system/puma.service
-    notify: reload puma
-
-  - name: enable puma
-    systemd: name=puma enabled=yes
-
-  handlers:
-
-  - name: reload puma  
-    systemd:
-      name: puma
-      state: reloaded
+  roles:
+    - app

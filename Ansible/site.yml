@@ -1,4 +1,4 @@
 ---
-- include: mongo-cfg.yml
-- include: puma-cfg.yml
-- include: puma-deploy.yml
+- import_playbook: mongo-cfg.yml
+- import_playbook: puma-cfg.yml
+- import_playbook: puma-deploy.yml
