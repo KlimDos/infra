@@ -1,0 +1,9 @@
+---
+- name: configure appication
+  hosts: app
+  gather_facts: no
+  become: yes
+  tags: configure-app   
+
+  roles:
+    - app

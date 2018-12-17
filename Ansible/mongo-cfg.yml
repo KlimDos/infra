@@ -1,0 +1,6 @@
+---
+- name: Configure hosts & deploy application
+  hosts: dbserver
+
+  roles:
+    - db

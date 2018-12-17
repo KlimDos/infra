@@ -1,0 +1,5 @@
+---
+- import_playbook: mongo-cfg.yml
+- import_playbook: puma-cfg.yml
+- import_playbook: puma-deploy.yml
+- import_playbook: install_nginx.yml
