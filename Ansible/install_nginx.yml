@@ -1,8 +1,8 @@
 ---
 - name: "Reddit App: Install NGnix"
-  hosts: local
+  hosts: app
   become: true
   gather_facts: yes
 
   roles:
-      - nginxinc.nginx
+      - hispanico.nginx-revproxy

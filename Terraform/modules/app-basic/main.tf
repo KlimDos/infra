@@ -2,7 +2,7 @@ resource "google_compute_instance" "app" {
   name         = "reddit-app"
   machine_type = "g1-small"
   zone         = "europe-west1-b"
-  tags         = ["reddit-app"]
+  tags         = ["reddit-app", "http-server"]
 
   #old fashen style of deploy the fresh application code
   #metadata_startup_script = "${file("../deploy.sh")}"

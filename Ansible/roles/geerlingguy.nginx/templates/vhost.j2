@@ -13,7 +13,7 @@ server {
 
     {% block server_basic -%}
     listen {{ item.listen | default('80') }};
-
+    proxy_pass http://127.0.0.1:9292;
 {% if item.server_name is defined %}
     server_name {{ item.server_name }};
 {% endif %}

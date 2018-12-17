@@ -46,6 +46,7 @@ server {
     location {{ item.value.web_server.locations[location].location }} {
         root   {{ item.value.web_server.locations[location].html_file_location }};
         index  {{ item.value.web_server.locations[location].html_file_name }};
+        proxy_pass http://127.0.0.1:9292;
 {% if item.value.web_server.locations[location].autoindex %}
         autoindex on;
 {% endif %}
