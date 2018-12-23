@@ -5,3 +5,6 @@
 *.retry
 .terraform/
 .vscode/
+# Vagrant
+.vagrant/
+.logs

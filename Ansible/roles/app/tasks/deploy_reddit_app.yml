@@ -1,0 +1,10 @@
+  - name: git clone 
+    git:   
+      repo: https://github.com/Artemmkin/reddit.git 
+      dest: "/home/{{ deploy_user }}/app/"
+    notify: restart puma      
+            
+  - name: Bundle install dependancy 
+    bundler:
+      state: present
+      chdir: "/home/{{ deploy_user }}/app"

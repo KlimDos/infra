@@ -4,9 +4,9 @@ After=network.target
 
 [Service]
 Type=simple
-EnvironmentFile=/home/aalimov/db_config
-User=aalimov
-WorkingDirectory=/home/aalimov/app
+EnvironmentFile=/home/{{ deploy_user }}/db_config
+User={{ deploy_user }}
+WorkingDirectory=/home/{{ deploy_user }}/app
 ExecStart=/bin/bash -lc 'puma'
 Restart=always
 
