@@ -5,3 +5,4 @@
 *.retry
 .terraform/
 .vscode/
+*infra-c700d8575b91.json

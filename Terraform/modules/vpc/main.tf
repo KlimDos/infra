@@ -22,3 +22,15 @@ resource "google_compute_firewall" "reddit-app" {
   target_tags   = ["reddit-app"]
   source_ranges = ["${var.source_ranges}"]
 }
+
+resource "google_compute_firewall" "prometheus" {
+  name    = "prometheus9090"
+  network = "default"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["9090"]
+  }
+
+  target_tags   = ["prometheus9090"]  
+}

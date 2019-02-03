@@ -26,3 +26,10 @@ variable "db_disk_image" {
 variable "creds" {
   default = "/home/sasha/Desktop/gcp-creds/infra-c700d8575b91.json"
   }
+
+variable "wdev" {
+  description = "0 for centos-7 clean / 1 for reddit app"
+}
+variable "tags_list" {
+  #type="list"
+}

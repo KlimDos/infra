@@ -1,13 +1,16 @@
 terraform {
   backend "gcs" {
+    credentials = "infra-c700d8575b91.json"
     bucket  = "aalimov-tf-state"
     prefix  = "terraform/staging/state"
+    #credentials = "${file("infra-c700d8575b91.json")}"
   }
 }
 
 provider "google" {
   project = "${var.project}"
   region  = "${var.region}"
+  credentials = "${var.creds}"
 }
 
 
